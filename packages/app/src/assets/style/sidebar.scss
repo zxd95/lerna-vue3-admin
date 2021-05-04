@@ -15,17 +15,17 @@
   // 菜单默认选中后字体样式
   $menuActiveText: #7a80b4;
   // 侧边栏默认宽度
-  $sideBarWidth: 220px;
+  $sideBarWidth: 210px;
 
   .main-container {
+    transition: margin-left 0.3s;
     min-height: 100%;
-    transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
     position: relative;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
+    transition: width 0.3s;
     width: $sideBarWidth !important;
     height: 100%;
     position: fixed;
@@ -93,5 +93,101 @@
         background-color: $subMenuHover !important;
       }
     }
+  }
+
+  .hideSidebar {
+    .main-container {
+      margin-left: 54px;
+    }
+
+    .sidebar-container {
+      width: 54px !important;
+    }
+
+    .submenu-title-noDropdown {
+      padding: 0 !important;
+      position: relative;
+
+      .el-tooltip {
+        padding: 0 !important;
+      }
+    }
+
+    .el-menu--collapse {
+      width: 54px;
+    }
+
+    .el-menu-item [class^=el-icon-] {
+      width: 0;
+    }
+
+    .el-submenu {
+      overflow: hidden;
+
+      & [class^=el-icon-] {
+        width: 0;
+      }
+
+      & > .el-submenu__title {
+        span {
+          display: none;
+        }
+
+        .el-submenu__icon-arrow {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // 菜单折叠
+  .el-menu--vertical {
+    .el-menu--popup {
+      background-color: $subMenuBg !important;
+
+      .el-menu-item {
+        color: $menuText;
+        background-color: $subMenuBg;
+        &:hover {
+          background-color: $subMenuHover;
+        }
+      }
+    }
+    & > .el-menu {
+
+      i {
+        margin-right: 16px;
+      }
+    }
+
+    .is-active > .el-submenu__title,
+    .is-active.submenu-title-noDropdown {
+      color: $subMenuActiveText !important;
+      i {
+        color: $subMenuActiveText !important;
+      }
+    }
+
+    .is-active {
+      transition: color 0.3s;
+      color: $subMenuActiveText !important;
+    }
+
+    .nest-menu .el-submenu > .el-submenu__title,
+    .el-menu-item {
+      &:hover {
+        // you can use $subMenuHover
+        background-color: $menuHover !important;
+      }
+    }
+  }
+
+  .el-scrollbar__wrap {
+    overflow: auto;
+    height: 100%;
+  }
+
+  .el-menu--collapse .el-menu .el-submenu {
+    min-width: $sideBarWidth !important;
   }
 }

@@ -27,7 +27,6 @@ export default {
   emits: ["toggleClick"],
   setup(props, ctx) {
     const toggleClick = () => {
-      debugger
       ctx.emit("toggleClick")
     }
 

@@ -5,6 +5,7 @@
       <el-menu
         mode="vertical"
         unique-opened
+        :collapse="isCollapse"
         :default-active="activeMenu"
         @select="onMenuSelect"
       >
@@ -22,6 +23,7 @@
 <script>
 import { computed } from "vue"
 import { useRouter, useRoute } from "vue-router"
+import { useStore } from "vuex"
 import logo from "./logo.vue"
 import sidebarItem from "./sidebarItem.vue"
 
@@ -35,6 +37,8 @@ export default {
     const router = useRouter().options.routes
     
     const route = useRoute()
+
+    const store = useStore()
 
     const activeMenu = computed(() => {
       const { meta, path } = route
@@ -62,6 +66,7 @@ export default {
     return {
       routes: computed(() => increaseIndexes(router)),
       activeMenu,
+      isCollapse: computed(() => !store.getters.sidebar.opened),
       onMenuSelect,
       increaseIndexes
     }

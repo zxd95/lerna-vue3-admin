@@ -1,14 +1,16 @@
 <template>
   <div class="navbar">
-    <hamburger class="hamburger-container" @toggleClick="toggleSidebar" />
+    <hamburger :isActive="sidebar.opened" class="hamburger-container" @toggleClick="toggleSidebar" />
     <!-- 面包屑 -->
     <bread-crumb class="breadcrumb-container" />
   </div>
 </template>
 
 <script>
-import hamburger from '../../../components/hamburger'
-import breadCrumb from '../../../components/breadCrumb'
+import { useStore } from "vuex"
+import { useMapGetters } from "../../../hooks/useMapGetters"
+import hamburger from "../../../components/hamburger"
+import breadCrumb from "../../../components/breadCrumb"
 
 export default {
   name: "navbar",
@@ -17,9 +19,14 @@ export default {
     breadCrumb
   },
   setup() {
-    const toggleSidebar = () => {}
+    const store = useStore()
+    
+    const toggleSidebar = () => {
+      store.dispatch("app/toggleSideBar")
+    }
 
     return {
+      ...useMapGetters(["sidebar"]),
       toggleSidebar
     }
   }
