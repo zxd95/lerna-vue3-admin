@@ -1,0 +1,33 @@
+// 暗色主题
+body[data-theme="dark"] {
+  $subMenuActiveText: #f4f4f5;
+  $menuBg: #1b2a47;
+  $menuHover: #2a395b;
+  $subMenuBg: #1f2d3d;
+  $subMenuHover: #001528;
+
+  @include merge-style(
+    $subMenuActiveText,
+    $menuBg,
+    $menuHover,
+    $subMenuBg,
+    $subMenuHover
+  );
+}
+
+// 亮色主题
+body[data-theme="light"] {
+  $subMenuActiveText: #409eff;
+  $menuBg: #fff;
+  $menuHover: #e0ebf6;
+  $subMenuBg: #fff;
+  $subMenuHover: #e0ebf6;
+
+  @include merge-style(
+    $subMenuActiveText,
+    $menuBg,
+    $menuHover,
+    $subMenuBg,
+    $subMenuHover
+  );
+}

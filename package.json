@@ -1,0 +1,13 @@
+{
+  "name": "lerna-vue3-admin",
+  "author": "zxd95",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "dev:app": "",
+    "dev:com": "",
+    "dev:utils": ""
+  }
+}

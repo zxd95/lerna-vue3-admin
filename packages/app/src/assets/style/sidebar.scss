@@ -1,0 +1,97 @@
+@mixin merge-style(
+  // 菜单选中后字体样式
+  $subMenuActiveText,
+  //菜单背景
+  $menuBg,
+  // 鼠标覆盖菜单时的背景
+  $menuHover,
+  // 子菜单背景
+  $subMenuBg,
+  // 鼠标覆盖子菜单时的背景
+  $subMenuHover
+) {
+  // 菜单默认字体样式
+  $menuText: #7a80b4;
+  // 菜单默认选中后字体样式
+  $menuActiveText: #7a80b4;
+  // 侧边栏默认宽度
+  $sideBarWidth: 220px;
+
+  .main-container {
+    min-height: 100%;
+    transition: margin-left 0.28s;
+    margin-left: $sideBarWidth;
+    position: relative;
+  }
+
+  .sidebar-container {
+    transition: width 0.28s;
+    width: $sideBarWidth !important;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 0px;
+    z-index: 1000;
+    overflow: hidden;
+    box-shadow: 0 0 1px #888888;
+    background-color: $menuBg;
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
+
+    .el-scrollbar {
+      height: 100%;
+    }
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      background-color: transparent;
+    }
+
+    .el-menu-item,
+    .el-submenu__title {
+      color: $menuText;
+    }
+
+    // menu hover
+    .submenu-title-noDropdown,
+    .el-submenu__title {
+      &:hover {
+        background-color: $menuHover !important;
+      }
+      background: $menuBg;
+    }
+
+    .is-active > .el-submenu__title,
+    .is-active.submenu-title-noDropdown {
+      color: $subMenuActiveText !important;
+      i {
+        color: $subMenuActiveText !important;
+      }
+    }
+
+    .is-active {
+      transition: color 0.3s;
+      color: $subMenuActiveText !important;
+    }
+
+    & .nest-menu .el-submenu > .el-submenu__title,
+    & .el-submenu .el-menu-item {
+      font-size: 12px;
+      min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
+
+      &:hover {
+        background-color: $subMenuHover !important;
+      }
+    }
+  }
+}
