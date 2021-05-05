@@ -104,26 +104,21 @@
       width: 54px !important;
     }
 
-    .submenu-title-noDropdown {
-      padding: 0 !important;
-      position: relative;
-
-      .el-tooltip {
-        padding: 0 !important;
-      }
-    }
-
     .el-menu--collapse {
       width: 54px;
     }
 
-    .el-menu-item [class^=el-icon-] {
-      width: 0;
+    .el-menu-item {
+      & [class^=el-icon-] {
+        width: 0;
+      }
+
+      & span {
+        display: none;
+      }
     }
 
     .el-submenu {
-      overflow: hidden;
-
       & [class^=el-icon-] {
         width: 0;
       }
