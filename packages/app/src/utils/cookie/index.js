@@ -11,6 +11,9 @@ function setCookie(key, value) {
 }
 
 // 清空
-function clearCookie() {}
+function clearCookie(key) {
+  debugger
+  Cookie.remove(key)
+}
 
 export { getCookie, setCookie, clearCookie }
